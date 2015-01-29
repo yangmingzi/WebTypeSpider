@@ -99,37 +99,7 @@ public class WebContent {
 			 
 		}
 	
-		public static String savefile(InputStream is) throws IOException{
 		
-				Path currentRelativePath = Paths.get("");
-				String currentPath = currentRelativePath.toAbsolutePath().toString();
-				int a = getIntWebIndex();
-				String filename = "web"+a+".htm";
-				BufferedReader bReader = new BufferedReader(new InputStreamReader(is));
-				BufferedInputStream bis = new BufferedInputStream(is);
-				byte bytes[] = new byte[1024 * 1000];
-				int index = 0;
-				int count = bis.read(bytes, index, 1024 * 100);
-				while (count != -1) {
-				index += count;
-				count = bis.read(bytes, index, 1);
-				}	
-				String sb = bytes.toString();
-//				String filePath = "D:/web1.htm";	
-				String filePath = currentPath+"/web/"+filename;
-				PrintWriter pw  =null;				
-				FileOutputStream fos = new FileOutputStream(filePath);				
-				OutputStreamWriter writer = new OutputStreamWriter(fos);				
-				pw = new PrintWriter(writer);
-				System.out.println(index);
-				fos.write(bytes, 0, index);
-				is.close();
-				bis.close();
-				fos.close();
-				System.out.println(sb.toString());
-			    return sb.toString();
-			
-		}
 		
 		public static boolean parseHtmlLable(String context) {
 		    String regex = "<meta>.*?</meta>";
